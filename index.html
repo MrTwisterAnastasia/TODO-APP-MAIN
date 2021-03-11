@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Practice #2 | Todo app</title>
+
+</head>
+
+<body>
+
+  <!-- Todo
+
+   Add dynamic number items left
+
+  All
+  Active 
+  Completed
+
+  Clear Completed
+
+  Drag and drop to reorder list -->
+
+
+
+  <div class="wrapper">
+    <div class="app">
+      <div class="app-block">
+        <div class="app__header">
+          <div class="app__title">
+            <span class="app__title-text">TODO</span>
+            <button id="toggleThemeBtn"><img src="./images/icon-moon.svg" alt="" id="toggleThemeImg"></button>
+          </div>
+          <div class="app__adding">
+            <input type="text" class="app__task-new" id="app__task-new" placeholder="  Please, add new task">
+            <label for="app__task-new"></label>
+
+          </div>
+        </div>
+        <div class="app__main">
+          <div class="app__body">
+            <form class="app__list" id="app__list">
+
+            </form>
+          </div>
+
+          <div class="app__footer">
+            <div class="app__footer-item">
+              <span class="app__info-textspan app__info-number" id="js-current-tasks"></span>
+              <span class="app__info-textspan">items left</span>
+            </div>
+            <div class="app__footer-filter-block">
+              <div class="app__footer-filter" id="app__footer-all">
+                <p>All</p>
+              </div>
+              <div class="app__footer-filter" id="app__footer-active">
+                <p>Active</p>
+              </div>
+              <div class="app__footer-filter" id="app__footer-completed">
+                <p>Completed</p>
+              </div>
+            </div>
+            <div class="app__footer-clear" id="app__footer-clear">
+              <p>Clear Completed</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="app__footer-filter-outblock">
+          <div class="app__footer-filter" id="app__footer-all">
+            <p>All</p>
+          </div>
+          <div class="app__footer-filter" id="app__footer-active">
+            <p>Active</p>
+          </div>
+          <div class="app__footer-filter" id="app__footer-completed">
+            <p>Completed</p>
+          </div>
+        </div>
+      </div>
+      <p>Drag and drop to reorder list</p>
+    </div>
+
+
+  </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

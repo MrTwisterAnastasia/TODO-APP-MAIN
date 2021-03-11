@@ -1,0 +1,384 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+body {
+   font-family: "Josefin Sans", sans-serif;
+   color: #000;
+   font-size: 18px;
+   margin: 0;
+}
+body.dark {
+   color: hsl(234, 39%, 85%);
+}
+body.dark .app {
+   background-image: url(images/bg-desktop-dark.jpg);
+   background-color: hsl(235, 21%, 11%);
+}
+body.dark .app__main,
+body.dark .app__task-new,
+body.dark .app__adding {
+   background-color: hsl(235, 24%, 19%);
+}
+body.dark .app__list-item-completed > .app__list-text,
+body.dark .app__list-text,
+body.dark .app__task-new {
+   color: hsl(236, 33%, 92%);
+}
+body.dark .app__list-item-completed > .app__list-text,
+body.dark .app__list-text:hover,
+body.dark .app__list-item,
+body.dark .app > p {
+   color: hsl(234, 11%, 52%);
+}
+body.dark .app__task-new {
+   border: 3px solid hsl(235, 24%, 19%);
+}
+body.dark .app__footer-filter-block > *:hover,
+body.dark .app__footer-filter-outblock > *:hover,
+body.dark .app__footer-clear > *:hover {
+   color: hsl(234, 39%, 85%);
+}
+body.dark .app__list-item {
+   border-bottom: 1px solid hsl(234, 11%, 52%);
+}
+body.dark .app__list-item:hover {
+   border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+
+.app {
+   background-color: hsl(0, 0%, 98%);
+   background-image: url(images/bg-desktop-light.jpg);
+   background-repeat: no-repeat;
+   background-position: top center;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+}
+#toggleThemeBtn {
+   background-color: transparent;
+   text-decoration: none;
+   -webkit-appearance: inherit;
+   padding: 0;
+   border: none;
+}
+.app__header {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 20vh;
+   padding-top: 0;
+   padding-bottom: 0;
+}
+.app__header > * {
+   width: 100%;
+}
+.app-block {
+   min-width: 50%;
+   display: flex;
+   flex-direction: column;
+
+   align-self: center;
+}
+.app__adding,
+.app__list-input-block {
+   position: relative;
+}
+.app__adding {
+   background: #fff;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   border-radius: 5px;
+}
+.app__adding label,
+.app__list-input-block label {
+   background-color: transparent;
+   border: 1px solid hsl(236, 9%, 61%);
+   border-radius: 50%;
+   cursor: pointer;
+   height: 25px;
+   left: 1%;
+   position: absolute;
+   top: 25%;
+   width: 25px;
+}
+.app__list-input-block label {
+   top: -3px;
+   left: 9px;
+}
+.app__adding label:hover,
+.app__list-input-block label:hover {
+   border: double 2px transparent;
+   border-radius: 50%;
+   background-image: linear-gradient(white, white),
+      linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+}
+body.dark .app__adding label:hover,
+body.dark .app__list-input-block label:hover {
+   border: double 2px transparent;
+   border-radius: 50%;
+   background-image: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%)),
+      linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+}
+.app__adding label:after,
+.app__list-input-block label:after {
+   border: 2px solid #fff;
+   border-top: none;
+   border-right: none;
+   content: "";
+   height: 6px;
+   left: 7px;
+   opacity: 0;
+   position: absolute;
+   top: 8px;
+   transform: rotate(-45deg);
+   width: 12px;
+}
+
+.app__adding input[type="checkbox"],
+.app__list-input-block input[type="checkbox"] {
+   visibility: hidden;
+}
+
+.app__adding input[type="checkbox"]:checked + label,
+.app__list-input-block input[type="checkbox"]:checked + label {
+   background: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.app__adding input[type="checkbox"]:checked + label:after,
+.app__list-input-block input[type="checkbox"]:checked + label:after {
+   opacity: 1;
+}
+
+.app__title {
+   display: flex;
+   justify-content: space-between;
+   align-items: start;
+   padding-top: 1%;
+}
+.app__title-text {
+   color: #fff;
+   font-size: 32px;
+   letter-spacing: 0.3em;
+   margin-bottom: 12%;
+}
+.app__task-new,
+.app__list-item {
+   padding: 3% 0;
+}
+.app__list-item {
+   min-width: 100%;
+}
+.app__list-text {
+   min-width: 85%;
+   color: hsl(235, 19%, 35%);
+}
+.app__list-item-completed > .app__list-text,
+.app__list-text:hover {
+   color: hsl(236, 9%, 61%);
+}
+.app__main {
+   border: 3px solid blak;
+   background: #fff;
+   min-width: 50%;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   border-radius: 5px;
+}
+.app__task-new {
+   border: none;
+   margin-left: 6%;
+   min-width: 90%;
+}
+.app__list-item:hover {
+   border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+.app__list-item {
+   border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+.app__list-text,
+input,
+img,
+.app__list-remove,
+.app__footer-filter-block > * {
+   cursor: pointer;
+}
+.app__list-item {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+}
+.app__list-text {
+   margin-left: 5%;
+}
+.app__list-remove {
+   background-image: url(images/icon-cross.svg);
+   background-repeat: no-repeat;
+   width: 20px;
+   height: 20px;
+}
+
+.app__list-item-completed {
+   text-decoration: line-through;
+   color: hsl(236, 9%, 61%);
+}
+.app__footer,
+.app__footer-filter-block {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.app__footer-item {
+   margin-left: 1%;
+}
+.app__footer-filter-block > *,
+.app__footer-item > *,
+.app__footer-clear > * {
+   font-size: 18px;
+   font-weight: 400;
+   color: hsl(236, 9%, 61%);
+}
+.app__footer-filter-block {
+   min-width: 30%;
+   margin-left: 25%;
+}
+.app__footer-filter-block > * {
+   margin-left: 1%;
+}
+.app__footer-clear {
+   margin-right: 2%;
+}
+.app__footer-filter-block > *:hover,
+.app__footer-filter-outblock > *:hover,
+.app__footer-clear > *:hover {
+   color: hsl(235, 19%, 35%);
+   cursor: pointer;
+}
+.app__list-item-block {
+   position: relative;
+}
+.app__list-item-block label {
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 50%;
+   cursor: pointer;
+   height: 28px;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 28px;
+}
+.app__list-item-block {
+   position: relative;
+}
+
+.app__list-item-block label {
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 50%;
+   cursor: pointer;
+   height: 20px;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 20px;
+}
+
+.app__list-item-block label:after {
+   border: 2px solid #fff;
+   border-top: none;
+   border-right: none;
+   content: "";
+   height: 6px;
+   left: 7px;
+   opacity: 0;
+   position: absolute;
+   top: 8px;
+   transform: rotate(-45deg);
+   width: 12px;
+}
+
+.app__list-item-block input[type="checkbox"] {
+   visibility: hidden;
+}
+
+.app__list-item-block input[type="checkbox"]:checked + label {
+   background-color: #66bb6a;
+   border-color: #66bb6a;
+}
+
+.app__list-item-block input[type="checkbox"]:checked + label:after {
+   opacity: 1;
+}
+.dragging {
+   opacity: 0.5;
+}
+.app > p {
+   align-self: center;
+   color: hsl(236, 9%, 61%);
+   margin-top: 5%;
+}
+.app__footer-filter-outblock {
+   display: none;
+}
+@media screen and (max-width: 430px) {
+   .app__main {
+      padding: 5%;
+      margin-top: -10%;
+      padding-bottom: 0;
+   }
+   .app__list-input-block label {
+      top: -3px;
+      left: -3px;
+   }
+   .app__adding label {
+      left: 4%;
+   }
+   .app-block {
+      width: 80%;
+   }
+   .app__header {
+      padding-top: 10%;
+      padding-bottom: 0;
+   }
+   .app__list-item,
+   .app__task-new {
+      height: 3vh;
+      align-items: center;
+   }
+   .app__task-new {
+      margin-left: 14%;
+      min-width: 85%;
+   }
+   .app__footer-filter-block {
+      display: none;
+   }
+   .app__footer-filter-outblock > * {
+      margin-left: 5%;
+      color: hsl(236, 9%, 61%);
+      cursor: pointer;
+   }
+   .app__footer-clear {
+      grid-area: 1 / 2 / 2 / 3;
+   }
+   .app__footer-clear > * {
+      font-size: 16px;
+   }
+   .app__footer-filter-outblock {
+      display: flex;
+      background: #fff;
+      min-width: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      justify-content: center;
+      margin-top: 10%;
+   }
+   body.dark .app__footer-filter-outblock {
+      background-color: hsl(235, 24%, 19%);
+   }
+   .app__list-text {
+      min-width: 75%;
+   }
+}
