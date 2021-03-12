@@ -48,6 +48,7 @@ body.dark .app__list-item:hover {
    background-color: hsl(0, 0%, 98%);
    background-image: url(images/bg-desktop-light.jpg);
    background-repeat: no-repeat;
+   background-size: 100% 20%;
    background-position: top center;
    height: 100vh;
    display: flex;
@@ -158,6 +159,7 @@ body.dark .app__list-input-block label:hover {
    justify-content: space-between;
    align-items: start;
    padding-top: 1%;
+   margin-bottom: -6%;
 }
 .app__title-text {
    color: #fff;
@@ -186,6 +188,7 @@ body.dark .app__list-input-block label:hover {
    min-width: 50%;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
    border-radius: 5px;
+   margin-top: -5%;
 }
 .app__task-new {
    border: none;
@@ -323,12 +326,30 @@ img,
 .app__footer-filter-outblock {
    display: none;
 }
-@media screen and (max-width: 430px) {
-   .app__main {
-      padding: 5%;
-      margin-top: -10%;
-      padding-bottom: 0;
+@media screen and (min-width: 1500px) {
+   .app__title {
+      margin-bottom: -10%;
    }
+   .app__list-item {
+      height: 0.5vh;
+   }
+   .app__task-new {
+      height: 0.2vh;
+   }
+}
+@media screen and (min-width: 1155px) and (max-width: 1395px) {
+   .app__header {
+      padding-top: -2%;
+   }
+   .app__title {
+      margin-bottom: -5%;
+   }
+   .app__main {
+      margin-top: -5%;
+   }
+}
+
+@media screen and (max-width: 1155px) {
    .app__list-input-block label {
       top: -3px;
       left: -3px;
@@ -345,7 +366,7 @@ img,
    }
    .app__list-item,
    .app__task-new {
-      height: 3vh;
+      height: 0.2vh;
       align-items: center;
    }
    .app__task-new {
@@ -380,5 +401,59 @@ img,
    }
    .app__list-text {
       min-width: 75%;
+   }
+   .app__header {
+      padding-top: 8%;
+   }
+   .app__main {
+      padding: 5%;
+      margin-top: 4%;
+   }
+   .app__adding {
+      margin-top: -6%;
+   }
+   .app__title {
+      margin-bottom: 0;
+   }
+}
+
+@media screen and (max-width: 1155px) {
+   .app__header {
+      padding-top: 0%;
+      margin-top: -4%;
+   }
+   .app__main {
+      margin-top: -2%;
+   }
+}
+@media screen and (min-width: 710px) and (max-width: 1155px) {
+   .app__main {
+      padding: 2%;
+   }
+}
+@media screen and (max-width: 995px) {
+   .app__header {
+      padding-top: 1%;
+   }
+   .app__main {
+      margin-top: -2%;
+   }
+}
+@media screen and (max-width: 855px) {
+   .app__list-item,
+   .app__task-new {
+      height: 3vh;
+      align-items: center;
+   }
+}
+@media screen and (max-width: 600px) {
+   .app__main {
+      margin-top: -7%;
+   }
+}
+
+@media screen and (max-width: 450px) {
+   .app__main {
+      margin-top: -13%;
    }
 }
