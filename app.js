@@ -8,13 +8,15 @@ let completed = document.querySelectorAll('.app__footer-completed');
 let clearCompleted = document.getElementById('app__footer-clear');
 
 class Task {
-   constructor(text) {
-      this.text = text;
-      this.isCompleted = false;
+   constructor(text, taskID, labelID) {
+      this.taskContent = text;
+      this.taskID = taskID;
+      this.labelID = labelID;
+      this.taskState = "current";
    }
 }
 
-class toDolist {
+class ToDolist {
 
    constructor(name) {
       this.name = name;
@@ -45,7 +47,6 @@ class toDolist {
    }
 
 
-
    addTask(el) {
       if (el == '' || el == null) {
          alert("I see you are really lazy today :)");
@@ -64,7 +65,6 @@ class toDolist {
 
    }
    itemID() {
-
       return (Math.random()).toString(36).substr(2, 16);
    }
 
@@ -256,7 +256,7 @@ class toDolist {
       }, { offset: Number.NEGATIVE_INFINITY }).element;
    }
 }
-let TODO = new toDolist('TODO');
+let TODO = new ToDolist('TODO');
 addNewTaskField.addEventListener('keyup', function (e) {
 
    if (e.code === 'Enter') {
