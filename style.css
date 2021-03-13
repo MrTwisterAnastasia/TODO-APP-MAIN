@@ -70,6 +70,7 @@ body.dark .app__list-item:hover {
    height: 20vh;
    padding-top: 0;
    padding-bottom: 0;
+   margin-bottom: 3%;
 }
 .app__header > * {
    width: 100%;
