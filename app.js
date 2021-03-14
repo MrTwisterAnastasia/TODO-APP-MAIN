@@ -1,11 +1,12 @@
 let taskList = document.getElementById('app__list');
 let currentTasks = document.getElementById('js-current-tasks');
 let addNewTaskField = document.getElementById('app__task-new');
+let clearCompleted = document.getElementById('app__footer-clear');
 
 let all = document.querySelectorAll('.app__footer-all');
 let active = document.querySelectorAll('.app__footer-active');
 let completed = document.querySelectorAll('.app__footer-completed');
-let clearCompleted = document.getElementById('app__footer-clear');
+
 
 class Task {
    constructor(text, taskID, labelID) {
@@ -27,8 +28,6 @@ class TodoItemsContainer {
             this.completed.push(task)
          }
       }
-
-
    }
 
    get currentTask() {
@@ -47,9 +46,6 @@ class ToDolist {
 
    }
 
-
-
-
    addTask(el) {
       if (el == '' || el == null) {
          alert("I see you are really lazy today :)");
@@ -59,14 +55,10 @@ class ToDolist {
          this.createItem(elem);
          currentTasks.innerHTML = this.todoItems.currentTask;
       }
-
-
    }
    itemID() {
       return (Math.random()).toString(36).substr(2, 16);
    }
-
-
 
    createItem(el) {
 
@@ -85,21 +77,17 @@ class ToDolist {
       labelDiv.classList.add('app__list-input-block');
       text.classList.add('app__list-text');
 
-
-
       text.addEventListener('click', (event) => this.completedTask(event.target));
       item.addEventListener('click', (event) => this.checkedTask(event.target));
       remove.addEventListener('click', (event) => this.removeTask(event.target));
       wrapper.addEventListener('dragstart', (event) => this.dragTask(event.target));
       wrapper.addEventListener('dragend', (event) => this.dragTask(event.target));
 
-
       switch (el.taskState) {
          case 'completed':
             wrapper.classList.add('app__list-item', 'app__list-item-completed');
             wrapper.setAttribute('draggable', 'true');
             item.setAttribute('checked', 'checked');
-
             break
          default:
             wrapper.classList.add('app__list-item');
@@ -119,13 +107,12 @@ class ToDolist {
       wrapper.appendChild(text);
       wrapper.appendChild(remove);
       wrapper.appendChild(gap);
-
-
    }
 
    dragTask(draggable) {
       draggable.classList.toggle('dragging');
    }
+
    completedTask(el) {
       let elem = el.parentNode,
          elemID = elem.id,
@@ -144,16 +131,13 @@ class ToDolist {
          itemsRemove.splice(index, 1);
       }
       currentTasks.innerHTML = this.todoItems.currentTask;
-
    }
-   checkedTask(el) {
 
+   checkedTask(el) {
       let elem = el.parentNode,
          elemParent = elem.parentNode,
          elemParentID = elemParent.id,
          elemState = elemParent.classList.contains('app__list-item-completed');
-
-
       const [itemsRemove, itemsAdd] = elemState ? [this.todoItems.completed, this.todoItems.current] : [this.todoItems.current, this.todoItems.completed];
       elemParent.classList.toggle('app__list-item-completed');
 
@@ -164,6 +148,7 @@ class ToDolist {
       }
       currentTasks.innerHTML = this.todoItems.currentTask;
    }
+
    removeTask(el) {
       let removeEl = el.parentNode,
          removeElID = removeEl.id,
@@ -174,7 +159,6 @@ class ToDolist {
          if (item.taskID !== removeElID) continue;
          items.splice(index, 1);
       }
-
       currentTasks.innerHTML = this.todoItems.currentTask;
    }
 
@@ -190,10 +174,9 @@ class ToDolist {
          item.taskState = 'current';
          this.createItem(item);
       }
-
-
       currentTasks.innerHTML = this.todoItems.currentTask
    }
+
    displayActive() {
       while (taskList.firstChild) {
          taskList.removeChild(taskList.firstChild);
@@ -202,9 +185,9 @@ class ToDolist {
          item.taskState = 'current'
          this.createItem(item)
       }
-
       currentTasks.innerHTML = this.todoItems.currentTask;
    }
+
    displayCompleted() {
       while (taskList.firstChild) {
          taskList.removeChild(taskList.firstChild);
@@ -213,20 +196,18 @@ class ToDolist {
          item.taskState = 'completed';
          this.createItem(item);
       }
-
       currentTasks.innerHTML = this.todoItems.currentTask;
    }
-   clearCompletedTasks() {
 
+   clearCompletedTasks() {
       let removeEls = document.querySelectorAll('.app__list-item-completed');
       removeEls.forEach(function (elem) {
          elem.parentNode.removeChild(elem);
       });
-
       let items = this.todoItems.completed;
-
       items.splice(0, items.length);
    }
+
    dradover(e) {
       e.preventDefault();
       const afteElement = this.getDragAfterElement(taskList, e.clientY);
@@ -237,12 +218,12 @@ class ToDolist {
          taskList.insertBefore(draggable, afteElement);
       }
    }
+
    getDragAfterElement(container, y) {
       const draggableElements = [...container.querySelectorAll('.app__list-item:not(.dragging)')];
       return draggableElements.reduce((closest, child) => {
          const box = child.getBoundingClientRect();
          const offset = y - box.top - box.height / 2;
-
          if (offset < 0 && offset > closest.offset) {
             return {
                offset: offset,
@@ -254,6 +235,7 @@ class ToDolist {
       }, { offset: Number.NEGATIVE_INFINITY }).element;
    }
 }
+
 let TODO = new ToDolist('TODO');
 addNewTaskField.addEventListener('keyup', function (e) {
 
@@ -263,14 +245,12 @@ addNewTaskField.addEventListener('keyup', function (e) {
    }
 });
 
-
-
-
 window.addEventListener('load', TODO.init());
 
 all.forEach(el => el.addEventListener('click', () => TODO.init()));
 active.forEach(el => el.addEventListener('click', () => TODO.displayActive()));
 completed.forEach(el => el.addEventListener('click', () => TODO.displayCompleted()));
+
 taskList.addEventListener('dragover', (e) => TODO.dradover(e));
 clearCompleted.addEventListener('click', () => TODO.clearCompletedTasks());
 
