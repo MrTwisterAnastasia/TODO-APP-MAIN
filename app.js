@@ -20,43 +20,29 @@ class ToDolist {
 
    constructor(name) {
       this.name = name;
-   }
+      let task_1 = new Task("Task 1", this.itemID(), this.itemID());
+      let task_2 = new Task("Task 2", this.itemID(), this.itemID());
+      let task_3 = new Task("Task 3", this.itemID(), this.itemID());
+      task_3.taskState = "completed";
+      this.todoItems = {
+         current: [task_1, task_2],
+         completed: [task_3],
+         get currentTask() {
+            return this.current.length;
+         },
 
-   todoItems = {
-      current: [{
-         taskID: this.itemID(),
-         labelID: this.itemID(),
-         taskContent: "Task 1",
-         taskState: "current"
-      }, {
-         taskID: this.itemID(),
-         labelID: this.itemID(),
-         taskContent: "Task 2",
-         taskState: "current"
-      },],
-      completed: [{
-         taskID: this.itemID(),
-         labelID: this.itemID(),
-         taskContent: "Task 3",
-         taskState: "completed"
-      }],
-      get currentTask() {
-         return this.current.length;
-      },
+      }
 
    }
+
+
 
 
    addTask(el) {
       if (el == '' || el == null) {
          alert("I see you are really lazy today :)");
       } else {
-         let elem = {
-            taskID: this.itemID(),
-            labelID: this.itemID(),
-            taskContent: el,
-            taskState: "current"
-         }
+         let elem = new Task(el, this.itemID(), this.itemID())
          this.todoItems.current.push(elem);
          this.createItem(elem);
          currentTasks.innerHTML = this.todoItems.currentTask;
