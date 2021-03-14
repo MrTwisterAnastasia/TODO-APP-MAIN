@@ -345,9 +345,6 @@ img,
    .app__title {
       margin-bottom: -5%;
    }
-   .app__main {
-      margin-top: -5%;
-   }
 }
 
 @media screen and (max-width: 1155px) {
@@ -408,7 +405,6 @@ img,
    }
    .app__main {
       padding: 5%;
-      margin-top: 4%;
    }
    .app__adding {
       margin-top: -6%;
@@ -423,9 +419,6 @@ img,
       padding-top: 0%;
       margin-top: -4%;
    }
-   .app__main {
-      margin-top: -2%;
-   }
 }
 @media screen and (min-width: 710px) and (max-width: 1155px) {
    .app__main {
@@ -436,25 +429,11 @@ img,
    .app__header {
       padding-top: 1%;
    }
-   .app__main {
-      margin-top: -2%;
-   }
 }
 @media screen and (max-width: 855px) {
    .app__list-item,
    .app__task-new {
       height: 3vh;
       align-items: center;
-   }
-}
-@media screen and (max-width: 600px) {
-   .app__main {
-      margin-top: -7%;
-   }
-}
-
-@media screen and (max-width: 450px) {
-   .app__main {
-      margin-top: -13%;
    }
 }
