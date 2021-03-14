@@ -17,23 +17,6 @@ class Task {
    }
 }
 
-class TodoItemsContainer {
-   current = [];
-   completed = [];
-   constructor(tasks = []) {
-      for (let task of tasks) {
-         if (task.taskState != "completed") {
-            this.current.push(task)
-         } else {
-            this.completed.push(task)
-         }
-      }
-   }
-
-   get currentTask() {
-      return this.current.length;
-   }
-}
 class ToDolist {
 
    constructor(name) {
@@ -42,18 +25,21 @@ class ToDolist {
       let task_2 = new Task("Task 2", this.itemID(), this.itemID());
       let task_3 = new Task("Task 3", this.itemID(), this.itemID());
       task_3.taskState = "completed";
-      this.todoItems = new TodoItemsContainer([task_1, task_2, task_3]);
-
+      this.current = [task_1, task_2];
+      this.completed = [task_3];
    }
 
+   get currentTask() {
+      return this.current.length;
+   }
    addTask(el) {
       if (el == '' || el == null) {
          alert("I see you are really lazy today :)");
       } else {
          let elem = new Task(el, this.itemID(), this.itemID())
-         this.todoItems.current.push(elem);
+         this.current.push(elem);
          this.createItem(elem);
-         currentTasks.innerHTML = this.todoItems.currentTask;
+         currentTasks.innerHTML = this.currentTask;
       }
    }
    itemID() {
@@ -120,7 +106,7 @@ class ToDolist {
          inputDiv = elem.firstChild,
          input = inputDiv.firstChild;
 
-      const [itemsRemove, itemsAdd] = elemState ? [this.todoItems.completed, this.todoItems.current] : [this.todoItems.current, this.todoItems.completed];
+      const [itemsRemove, itemsAdd] = elemState ? [this.completed, this.current] : [this.current, this.completed];
       elem.classList.toggle('app__list-item-completed');
 
       elemState ? input.checked = false : input.checked = true;
@@ -130,7 +116,7 @@ class ToDolist {
          itemsAdd.push(item);
          itemsRemove.splice(index, 1);
       }
-      currentTasks.innerHTML = this.todoItems.currentTask;
+      currentTasks.innerHTML = this.currentTask;
    }
 
    checkedTask(el) {
@@ -138,7 +124,7 @@ class ToDolist {
          elemParent = elem.parentNode,
          elemParentID = elemParent.id,
          elemState = elemParent.classList.contains('app__list-item-completed');
-      const [itemsRemove, itemsAdd] = elemState ? [this.todoItems.completed, this.todoItems.current] : [this.todoItems.current, this.todoItems.completed];
+      const [itemsRemove, itemsAdd] = elemState ? [this.completed, this.current] : [this.current, this.completed];
       elemParent.classList.toggle('app__list-item-completed');
 
       for (const [index, item] of itemsRemove.entries()) {
@@ -146,7 +132,7 @@ class ToDolist {
          itemsAdd.push(item);
          itemsRemove.splice(index, 1);
       }
-      currentTasks.innerHTML = this.todoItems.currentTask;
+      currentTasks.innerHTML = this.currentTask;
    }
 
    removeTask(el) {
@@ -154,49 +140,49 @@ class ToDolist {
          removeElID = removeEl.id,
          removeElStatus = removeEl.classList.contains('app__list-item-completed');
       removeEl.remove();
-      const items = removeElStatus ? this.todoItems.completed : this.todoItems.current;
+      const items = removeElStatus ? this.completed : this.current;
       for (let [index, item] of items.entries()) {
          if (item.taskID !== removeElID) continue;
          items.splice(index, 1);
       }
-      currentTasks.innerHTML = this.todoItems.currentTask;
+      currentTasks.innerHTML = this.currentTask;
    }
 
    init() {
       while (taskList.firstChild) {
          taskList.removeChild(taskList.firstChild);
       }
-      for (let item of this.todoItems.completed) {
+      for (let item of this.completed) {
          item.taskState = 'completed';
          this.createItem(item);
       }
-      for (let item of this.todoItems.current) {
+      for (let item of this.current) {
          item.taskState = 'current';
          this.createItem(item);
       }
-      currentTasks.innerHTML = this.todoItems.currentTask
+      currentTasks.innerHTML = this.currentTask
    }
 
    displayActive() {
       while (taskList.firstChild) {
          taskList.removeChild(taskList.firstChild);
       }
-      for (let item of this.todoItems.current) {
+      for (let item of this.current) {
          item.taskState = 'current'
          this.createItem(item)
       }
-      currentTasks.innerHTML = this.todoItems.currentTask;
+      currentTasks.innerHTML = this.currentTask;
    }
 
    displayCompleted() {
       while (taskList.firstChild) {
          taskList.removeChild(taskList.firstChild);
       }
-      for (let item of this.todoItems.completed) {
+      for (let item of this.completed) {
          item.taskState = 'completed';
          this.createItem(item);
       }
-      currentTasks.innerHTML = this.todoItems.currentTask;
+      currentTasks.innerHTML = this.currentTask;
    }
 
    clearCompletedTasks() {
@@ -204,7 +190,7 @@ class ToDolist {
       removeEls.forEach(function (elem) {
          elem.parentNode.removeChild(elem);
       });
-      let items = this.todoItems.completed;
+      let items = this.completed;
       items.splice(0, items.length);
    }
 
