@@ -16,6 +16,25 @@ class Task {
    }
 }
 
+class todoItemsContainer {
+   current = [];
+   completed = [];
+   constructor(tasks = []) {
+      for (let task of tasks) {
+         if (task.taskState != "completed") {
+            this.current.push(task)
+         } else {
+            this.completed.push(task)
+         }
+      }
+
+
+   }
+
+   get currentTask() {
+      return this.current.length;
+   }
+}
 class ToDolist {
 
    constructor(name) {
@@ -24,14 +43,7 @@ class ToDolist {
       let task_2 = new Task("Task 2", this.itemID(), this.itemID());
       let task_3 = new Task("Task 3", this.itemID(), this.itemID());
       task_3.taskState = "completed";
-      this.todoItems = {
-         current: [task_1, task_2],
-         completed: [task_3],
-         get currentTask() {
-            return this.current.length;
-         },
-
-      }
+      this.todoItems = new todoItemsContainer([task_1, task_2, task_3]);
 
    }
 
