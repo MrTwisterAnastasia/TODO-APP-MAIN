@@ -16,7 +16,7 @@ class Task {
    }
 }
 
-class todoItemsContainer {
+class TodoItemsContainer {
    current = [];
    completed = [];
    constructor(tasks = []) {
@@ -43,7 +43,7 @@ class ToDolist {
       let task_2 = new Task("Task 2", this.itemID(), this.itemID());
       let task_3 = new Task("Task 3", this.itemID(), this.itemID());
       task_3.taskState = "completed";
-      this.todoItems = new todoItemsContainer([task_1, task_2, task_3]);
+      this.todoItems = new TodoItemsContainer([task_1, task_2, task_3]);
 
    }
 
