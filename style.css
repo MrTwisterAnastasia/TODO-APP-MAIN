@@ -48,7 +48,7 @@ body.dark .app__list-item:hover {
    background-color: hsl(0, 0%, 98%);
    background-image: url(images/bg-desktop-light.jpg);
    background-repeat: no-repeat;
-   background-size: 100% 20%;
+   background-size: 100% 235px;
    background-position: top center;
    height: 100vh;
    display: flex;
@@ -67,9 +67,7 @@ body.dark .app__list-item:hover {
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   height: 20vh;
-   padding-top: 0;
-   padding-bottom: 0;
+   margin-top: 2%;
    margin-bottom: 3%;
 }
 .app__header > * {
@@ -184,12 +182,10 @@ body.dark .app__list-input-block label:hover {
    color: hsl(236, 9%, 61%);
 }
 .app__main {
-   border: 3px solid blak;
    background: #fff;
    min-width: 50%;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
    border-radius: 5px;
-   margin-top: -5%;
 }
 .app__task-new {
    border: none;
@@ -339,9 +335,6 @@ img,
    }
 }
 @media screen and (min-width: 1155px) and (max-width: 1395px) {
-   .app__header {
-      padding-top: -2%;
-   }
    .app__title {
       margin-bottom: -5%;
    }
@@ -417,7 +410,6 @@ img,
 @media screen and (max-width: 1155px) {
    .app__header {
       padding-top: 0%;
-      margin-top: -4%;
    }
 }
 @media screen and (min-width: 710px) and (max-width: 1155px) {
@@ -435,5 +427,10 @@ img,
    .app__task-new {
       height: 3vh;
       align-items: center;
+   }
+}
+@media screen and (max-width: 630px) {
+   .app {
+      background-size: 100% 23%;
    }
 }
